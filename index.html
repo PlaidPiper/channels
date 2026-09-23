@@ -7,10 +7,15 @@
 <style>
   body { font: 17px/1.6 system-ui, sans-serif; max-width: 42rem; margin: 3rem auto; padding: 0 1rem; color: #1a1a1a; background: #fafafa; }
   a { color: #0b5cad; }
+  .legal { font-size: 18px; }
+  .yt { margin-top: 2.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 15px; color: #444; }
+  .yt img { width: 196px; height: auto; display: block; }
   footer { margin-top: 3rem; font-size: 14px; color: #666; }
 </style>
 </head>
 <body>
+<nav><strong>Home</strong> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a></nav>
+
 <h1>Loiter Mode &amp; Pastlight</h1>
 <p>This site hosts the information page for <strong>heph-content</strong>, a private
 upload tool used by the owner of two YouTube channels:</p>
@@ -18,9 +23,21 @@ upload tool used by the owner of two YouTube channels:</p>
   <li><a href="https://www.youtube.com/@LoiterMode">Loiter Mode</a>: fixed-wing FPV flight.</li>
   <li><a href="https://www.youtube.com/@PastlightFilms">Pastlight</a>: history and technology documentaries.</li>
 </ul>
-<p>The tool publishes videos and their titles, descriptions and thumbnails to those
-channels on the owner's behalf. It is not offered to the public and has no other users.</p>
-<p><a href="privacy.html">Privacy policy</a></p>
+<p>The tool uses YouTube API Services to publish videos and their titles, descriptions and
+thumbnails to those channels on the owner's behalf. Uploads are private unless the owner
+chooses otherwise. It is not offered to the public and has no other users.</p>
+
+<p class="legal"><a href="privacy.html">Privacy policy</a> ·
+<a href="terms.html">Terms of service</a></p>
+<p>By using heph-content you agree to be bound by the
+<a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>; see also the
+<a href="http://www.google.com/policies/privacy">Google Privacy Policy</a>.</p>
+
+<div class="yt">
+  <a href="https://www.youtube.com/"><img src="images/developed-with-youtube-sentence-case-dark.png"
+     width="196" height="70" alt="Developed with YouTube"></a>
+</div>
+
 <footer>Questions: <a href="https://github.com/PlaidPiper/channels/issues">open an issue</a>.</footer>
 </body>
 </html>

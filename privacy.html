@@ -7,44 +7,124 @@
 <style>
   body { font: 17px/1.6 system-ui, sans-serif; max-width: 42rem; margin: 3rem auto; padding: 0 1rem; color: #1a1a1a; background: #fafafa; }
   a { color: #0b5cad; }
+  h2 { margin-top: 2.2rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: .35rem .5rem; border-bottom: 1px solid #ddd; }
   footer { margin-top: 3rem; font-size: 14px; color: #666; }
 </style>
 </head>
 <body>
-<h1>Privacy policy</h1>
-<p><em>Effective 23 September 2026</em></p>
+<nav><a href="index.html">Home</a> · <strong>Privacy policy</strong> · <a href="terms.html">Terms of service</a></nav>
 
-<p><strong>heph-content</strong> is a private tool used by the owner of the
+<h1>Privacy policy</h1>
+<p><em>Last updated 23 September 2026</em></p>
+
+<p><strong>heph-content</strong> is a private command-line tool used by the owner of the
 <a href="https://www.youtube.com/@LoiterMode">Loiter Mode</a> and
 <a href="https://www.youtube.com/@PastlightFilms">Pastlight</a> YouTube channels to upload
-and manage their own videos. It has one user: the channel owner.</p>
+and manage videos on those two channels. It has one user: the channel owner. It has no
+website login, no accounts for other people, and it is not offered to the public.
+Using the tool means agreeing to this policy and to the <a href="terms.html">terms of service</a>.</p>
 
-<h2>What it accesses</h2>
-<p>With the owner's permission, the tool uses the YouTube Data API to upload videos,
-set titles, descriptions, thumbnails, captions and schedules, and read basic channel
-information (channel name and ID) for the owner's own channels only.</p>
+<h2 id="youtube">YouTube API Services</h2>
+<p>heph-content uses <strong>YouTube API Services</strong> (the YouTube Data API v3).
+By using it, you agree to be bound by the
+<a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>.
+Google's handling of your data is described in the
+<a href="http://www.google.com/policies/privacy">Google Privacy Policy</a>.</p>
 
-<h2>What it stores</h2>
-<p>It stores the OAuth access credentials Google issues, encrypted, on the owner's
-own private infrastructure. It does not collect, store, sell or share personal data
-of anyone else, and it does not read viewers' data.</p>
+<h2 id="accessed">What data the tool accesses</h2>
+<p>The channel owner authorises the tool once per channel with Google OAuth. With that
+authorisation, and only for the owner's own two channels, it:</p>
+<ul>
+  <li><strong>uploads videos</strong> with the title, description, tags, category, language,
+    privacy setting (private or unlisted; never public by default), the
+    "made for kids" and "altered or synthetic content" declarations, and an optional
+    scheduled publish time;</li>
+  <li><strong>sets thumbnails</strong> and <strong>adds videos to the owner's playlists</strong>;</li>
+  <li><strong>makes one video public</strong> only when the owner types the video's title
+    back to confirm;</li>
+  <li><strong>updates channel branding</strong>: banner image, channel description and
+    keywords, and the video watermark;</li>
+  <li><strong>reads</strong> the channel's ID, title and branding settings, the channel's
+    playlists, and the title, file size and original file name of the channel's 50 most
+    recent uploads, and the title and privacy settings of a video before it is made
+    public. These reads check that the right channel is authorised, that a
+    playlist belongs to the channel, and that a video is not uploaded twice. The results
+    are used during that run and are not saved.</li>
+</ul>
+<p>Separately, the owner occasionally runs a read-only research script that searches
+<strong>public</strong> YouTube videos about topics the Pastlight channel might cover.
+It reads public information only: video titles, channel names, publish dates,
+descriptions, durations and view, like and comment counts. It uses no one's account but the
+owner's and does not read any private data.</p>
+<p>The tool does not access viewers' data, comments, messages, subscribers' identities,
+YouTube Analytics or revenue data.</p>
 
-<h2>Sharing</h2>
-<p>No data is shared with third parties. The use and transfer of information
-received from Google APIs adheres to the
+<h2 id="stored">What data the tool stores</h2>
+<table>
+  <tr><th>Data</th><th>Where</th><th>How long</th></tr>
+  <tr><td>OAuth refresh token for each of the two channels, with the channel ID, channel
+    title and granted scopes</td>
+    <td>An encrypted secrets store on the owner's own private infrastructure. Short-lived
+    access tokens are held in memory only for the length of one command.</td>
+    <td>Until access is revoked (see below).</td></tr>
+  <tr><td>One small upload record per video: the channel and video ID, a checksum and size
+    of the video file, a checksum of the metadata sent, the resumable-upload session
+    address, the upload status, the scheduled publish time, the declarations sent, and
+    which thumbnail and playlists were applied</td>
+    <td>A file next to the video on the owner's own computer, readable only by the owner's
+    account.</td>
+    <td>Only as long as needed to finish that upload; deleted or re-checked against YouTube
+    within 30 days.</td></tr>
+  <tr><td>Public video information from the research script (listed above)</td>
+    <td>Files on the owner's own computer.</td>
+    <td>Deleted or refreshed within 30 days of being fetched.</td></tr>
+</table>
+<p>Nothing else is stored. Tokens and client secrets are never written to the upload
+records.</p>
+
+<h2 id="use">How the data is used and shared</h2>
+<p>The data is used only to publish and manage videos on the owner's two channels and to
+plan the owner's own videos. It is <strong>not shared</strong> with anyone, internally or
+externally, and is <strong>not sold</strong>. It is not used for advertising or profiling.
+The use and transfer of information received from Google APIs adheres to the
 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API
 Services User Data Policy</a>, including the Limited Use requirements.</p>
+<p>The tool does not let third parties serve content or advertisements.</p>
 
-<h2>Revoking access</h2>
-<p>Access can be revoked at any time at
-<a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+<h2 id="cookies">Cookies and device information</h2>
+<p>The tool runs on the owner's own computer. Neither the tool nor this website sets
+cookies, uses analytics or tracking, or collects information from your device. This
+website is hosted on GitHub Pages; GitHub may record visits as described in its own
+<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">privacy
+statement</a>.</p>
 
-<h2>Google and YouTube terms</h2>
-<p>Use of YouTube through this tool is subject to the
-<a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a> and the
-<a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<h2 id="revoke">Revoking access</h2>
+<p>You can revoke heph-content's access to your Google account at any time on Google's
+security settings page:
+<a href="https://security.google.com/settings/security/permissions">https://security.google.com/settings/security/permissions</a>.
+Once access is revoked the stored refresh token no longer works, and the tool can no longer
+read or change anything on the channel.</p>
 
-<footer><a href="index.html">Home</a> · Questions:
-<a href="https://github.com/PlaidPiper/channels/issues">open an issue</a>.</footer>
+<h2 id="delete">Deleting your data</h2>
+<p>In addition to revoking access, you can ask for all stored data about you to be deleted
+by <a href="https://github.com/PlaidPiper/channels/issues">opening an issue</a> on this
+site's repository. Stored data is deleted within 7 days of a request, and within 7 days
+after access is revoked: the stored token is removed from the secrets store and the upload
+records for that channel are deleted. Deleting a video from YouTube itself is done in
+YouTube Studio.</p>
+
+<h2 id="contact">Contact</h2>
+<p>Questions or complaints about these privacy practices:
+<a href="https://github.com/PlaidPiper/channels/issues">open an issue</a> on
+<a href="https://github.com/PlaidPiper/channels">github.com/PlaidPiper/channels</a>.</p>
+
+<h2 id="changes">Changes to this policy</h2>
+<p>Changes are published on this page with a new "last updated" date. The full history is
+in the site's public repository.</p>
+
+<footer><a href="index.html">Home</a> · <a href="terms.html">Terms of service</a> ·
+Questions: <a href="https://github.com/PlaidPiper/channels/issues">open an issue</a>.</footer>
 </body>
 </html>
